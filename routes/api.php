@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\Admin\NewsLetterController;
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::controller(NewsLetterController::class)->group(function () {
+    Route::post('/send-news-letter', 'index');
 });
